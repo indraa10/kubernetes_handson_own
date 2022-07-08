@@ -7,35 +7,18 @@ newpods-k969w
 newpods-ftptd
 newpods-l72vs
 
-#store the pod list to a file 
+# store the pod list to a file 
 kubectl get pods --no-headers | awk '{ print $1 }' > pod_list.txt
 
-#get the node details of all the pods in defult namespace 
-cat pod_list.txt | while read lines ; do kubectl describe pods $lines | grep -i node >> node_details.txt ; done
+# get the node details of all the pods in defult namespace 
 
-controlplane ~ ➜  cat node_details.txt 
-Node:         controlplane/172.25.0.83
-Node-Selectors:              <none>
-Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
-                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
-Node:         controlplane/172.25.0.83
-Node-Selectors:              <none>
-Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
-                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
-Node:         controlplane/172.25.0.83
-Node-Selectors:              <none>
-Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
-                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
-Node:         controlplane/172.25.0.83
-Node-Selectors:              <none>
-Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
-                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
-                             
+cat pod_list.txt | while read lines ; do kubectl describe pods $lines | grep -i node >> node_details.txt ; done
+                        
                              
 controlplane ~ ➜  kubectl get pods | grep webapp
 webapp          1/2     ImagePullBackOff   0               15s
 
-What does the READY column in the output of the kubectl get pods command indicate?
+# What does the READY column in the output of the kubectl get pods command indicate?
 --> running containers in pod / total containers
 
 1/2 --> means , particular pod has two containers and among 2 one is in active state.
@@ -51,11 +34,7 @@ controlplane ~ ➜  kubectl run redis --image=redis123 --dry-run=client -o yaml 
 controlplane ~ ➜  vi redis-pod-defination.yaml 
 
 controlplane ~ ➜  kubectl get pods
-NAME            READY   STATUS    RESTARTS      AGE
-nginx           1/1     Running   0             29m
-newpods-k969w   1/1     Running   1 (12m ago)   29m
-newpods-ftptd   1/1     Running   1 (12m ago)   29m
-newpods-l72vs   1/1     Running   1 (12m ago)   29m
+
 
 # you can use ( . ) then kubectl will create all resources from all the manifest yaml file present in current directory
 controlplane ~ ➜  kubectl create -f .
