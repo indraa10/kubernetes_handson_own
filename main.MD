@@ -37,5 +37,9 @@ pod/redis created
 
 # replace the existing pod with same updated pod. you need to use --force option to delete the existing pod and replace the same pod with updated settings added to the manifest file.
 controlplane ~ ➜  kubectl replace -f redis-pod-defination.yaml --force
+
+
 pod "redis" deleted
+
+
 pod/redis replaced
