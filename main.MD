@@ -1,11 +1,5 @@
 # get all the pods in default namespace - only pod name without header
 kubectl get pods --no-headers | awk '{ print $1 }'
-\n
-controlplane ~ ➜  kubectl get pods --no-headers | awk '{ print $1 }'
-nginx
-newpods-k969w
-newpods-ftptd
-newpods-l72vs
 
 # store the pod list to a file 
 kubectl get pods --no-headers | awk '{ print $1 }' > pod_list.txt
@@ -14,18 +8,15 @@ kubectl get pods --no-headers | awk '{ print $1 }' > pod_list.txt
 
 cat pod_list.txt | while read lines ; do kubectl describe pods $lines | grep -i node >> node_details.txt ; done
                         
-                             
-controlplane ~ ➜  kubectl get pods | grep webapp
-webapp          1/2     ImagePullBackOff   0               15s
-
 # What does the READY column in the output of the kubectl get pods command indicate?
+
 --> running containers in pod / total containers
 
 1/2 --> means , particular pod has two containers and among 2 one is in active state.
 
 controlplane ~ ➜  kubectl describe pod webapp | grep -i image  --> get the image details for pod
 
-delete pod : 
+# delete pod : 
 controlplane ~ ➜  kubectl delete pod webapp
 pod "webapp" deleted
 
