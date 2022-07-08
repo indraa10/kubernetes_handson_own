@@ -1,6 +1,6 @@
 # get all the pods in default namespace - only pod name without header
 kubectl get pods --no-headers | awk '{ print $1 }'
-
+\n
 controlplane ~ ➜  kubectl get pods --no-headers | awk '{ print $1 }'
 nginx
 newpods-k969w
