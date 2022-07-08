@@ -29,15 +29,11 @@ controlplane ~ ➜  kubectl get pods
 
 # you can use ( . ) then kubectl will create all resources from all the manifest yaml file present in current directory
 controlplane ~ ➜  kubectl create -f .
+
+
 pod/redis created
 
-controlplane ~ ➜  kubectl get pods
-NAME            READY   STATUS         RESTARTS      AGE
-nginx           1/1     Running        0             30m
-newpods-k969w   1/1     Running        1 (13m ago)   30m
-newpods-ftptd   1/1     Running        1 (13m ago)   30m
-newpods-l72vs   1/1     Running        1 (13m ago)   30m
-redis           0/1     ErrImagePull   0             9s
+
 
 # replace the existing pod with same updated pod. you need to use --force option to delete the existing pod and replace the same pod with updated settings added to the manifest file.
 controlplane ~ ➜  kubectl replace -f redis-pod-defination.yaml --force
