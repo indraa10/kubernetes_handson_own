@@ -43,3 +43,11 @@ pod "redis" deleted
 
 
 pod/redis replaced
+
+# get all the pods from all the namespace 
+
+controlplane ~ ➜  kubectl get pods -A
+
+with all the information
+
+controlplane ~ ➜  kubectl get pods -A -o wide
